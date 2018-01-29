@@ -32,7 +32,6 @@ extension UITableViewCell: ReusableView { }
 extension CategoryTVC: NibLoadableView { }
 
 
-
 // MARK - table View Extensions
 extension UITableView {
     

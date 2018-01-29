@@ -21,7 +21,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALu-kN-NLV">
-                        <rect key="frame" x="16" y="37" width="182" height="21"/>
+                        <rect key="frame" x="16" y="37" width="268" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2v-GY-gFe">
+                        <rect key="frame" x="292" y="37" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="ORJ-E2-gfb"/>
+                            <constraint firstAttribute="width" constant="42" id="zQQ-wX-Is1"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -30,15 +40,19 @@
                 <constraints>
                     <constraint firstItem="ALu-kN-NLV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7Em-V9-U3N"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ALu-kN-NLV" secondAttribute="bottom" constant="27" id="I9T-GM-egV"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="ALu-kN-NLV" secondAttribute="trailing" constant="146" id="Mul-cq-7bf"/>
+                    <constraint firstItem="d2v-GY-gFe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="26" id="Lao-Wc-e7k"/>
                     <constraint firstItem="ALu-kN-NLV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="26" id="S3c-6l-fXP"/>
+                    <constraint firstItem="d2v-GY-gFe" firstAttribute="leading" secondItem="ALu-kN-NLV" secondAttribute="trailing" constant="8" id="Wys-WN-NqD"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="d2v-GY-gFe" secondAttribute="trailing" constant="10" id="gEV-Tx-WzD"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="d2v-GY-gFe" secondAttribute="bottom" constant="27" id="lkj-1y-7wv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="categoryType" destination="ALu-kN-NLV" id="mZd-PX-N6G"/>
+                <outlet property="priority" destination="d2v-GY-gFe" id="vZ7-I8-di4"/>
             </connections>
-            <point key="canvasLocation" x="7" y="48"/>
+            <point key="canvasLocation" x="-63" y="41"/>
         </tableViewCell>
     </objects>
 </document>

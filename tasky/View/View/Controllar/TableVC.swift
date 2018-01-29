@@ -8,6 +8,8 @@
 
 import UIKit
 
+var rout = Routing()
+
 class TableVC: UITableViewController {
 
     var tableVM = TableVM()
@@ -34,9 +36,23 @@ class TableVC: UITableViewController {
 
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        print(tableVM.array[indexPath.row].name)
+        
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            
+           tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            
+        } else {
+            
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+//        let path = Path.init(id: "TableVC", type: "items")
+//        rout.push(id: path , nav: self)
     }
 }
 

@@ -20,6 +20,19 @@ struct TableVM {
 
 struct CatCell {
     var name: String?
+    var important: String?
+    
+    func getImportance(_ impor: Important) -> String{
+        
+        switch impor {
+        case .high:
+            return "!!!"
+        case .med:
+            return "!!"
+        default:
+            return "!"
+        }
+    }
 }
 
 extension TableVM{
@@ -33,14 +46,17 @@ extension TableVM{
 extension CatCell {
     init(model: ModelCat) {
         name = model.name
+        important = getImportance(model.importance)
     }
 }
 
 struct TestCase {
     var array: [CatCell] = []
     init() {
-        array.append(CatCell(model: ModelCat(newName: "sara", important: .high)))
-        array.append(CatCell(model: ModelCat(newName: "mustafa", important: .high)))
+        array.append(CatCell(model: ModelCat(newName: "Welcome", important: .high)))
+        array.append(CatCell(model: ModelCat(newName: "To what i call", important: .low)))
+        array.append(CatCell(model: ModelCat(newName: "P-VVM-RLND", important: .med)))
+        array.append(CatCell(model: ModelCat(newName: "tooooo complicated i know!", important: .high)))
     }
 }
 
