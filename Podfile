@@ -5,16 +5,5 @@ target 'tasky' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for tasky
-
-  target 'taskyTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'taskyUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+  pod 'RealmSwift'
 end
