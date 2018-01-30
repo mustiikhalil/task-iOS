@@ -29,7 +29,8 @@ extension NibLoadableView where Self: UIView {
 
 extension UITableViewCell: ReusableView { }
 
-extension CategoryTVC: NibLoadableView { }
+extension CategoryVCell: NibLoadableView { }
+extension ItemVCell: NibLoadableView { }
 
 
 // MARK - table View Extensions
@@ -48,6 +49,7 @@ extension UITableView {
         return cell
     }
 }
+
 
 
 

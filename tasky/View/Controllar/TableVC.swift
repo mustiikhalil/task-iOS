@@ -2,9 +2,12 @@
 //  ViewController.swift
 //  tasky
 //
+//        let path = Path.init(id: "TableVC", type: "items")
+//        rout.push(id: path , nav: self)
 //  Created by Mustafa Khalil on 1/29/18.
 //  Copyright © 2018 Mustafa Khalil. All rights reserved.
 //
+
 
 import UIKit
 
@@ -12,12 +15,13 @@ var rout = Routing()
 
 class TableVC: UITableViewController {
     
-    var tableVM = TableVM()
+    var tableVM = ItemTableVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(CategoryTVC.self)
+        tableVM.fetch()
+        tableView.register(ItemVCell.self)
     }
     
     
@@ -29,29 +33,26 @@ class TableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath as NSIndexPath) as CategoryTVC
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath as NSIndexPath) as ItemVCell
         let data = tableVM.array[indexPath.row]
+
+        cell.configure(with: data)
+        cell.accessoryType = data.didCheck ? .checkmark : .none
         
-        cell.ConfigureCell(at: data)
-        
-        cell.accessoryType = data.didCheck! ? .checkmark : .none
-        
-        return cell
+        return UITableViewCell()
         
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableVM.array[indexPath.row].didCheck = !(tableVM.array[indexPath.row].didCheck!)
+        tableVM.didChange(at: indexPath.row)
+//        tableVM.remove(at: indexPath.row)
         tableView.reloadData()
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
-        
-        //        let path = Path.init(id: "TableVC", type: "items")
-        //        rout.push(id: path , nav: self)
     }
+    
+    // Mark - Adding items to myTasks
     
     @IBAction func addNewItems(_ sender: Any) {
         
@@ -59,11 +60,13 @@ class TableVC: UITableViewController {
         let alert = UIAlertController(title: "Add Item", message: "Please add an Item to the list", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Add", style: .default){
             (action) in
+            
             self.tableVM.add(newItem: textField.text!)
             
             self.tableView.reloadData()
             
         }
+        
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Create new Item"
             textField = alertTextField
@@ -72,9 +75,31 @@ class TableVC: UITableViewController {
         
         present(alert, animated: true, completion: nil)
         
-        
     }
     
+}
+
+
+// Mark - Search bar methods
+
+extension TableVC: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        tableVM.Search(text: searchBar.text!)
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0{
+            tableVM.fetch()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+            
+        }
+        else{
+            tableVM.Search(text: searchBar.text!)
+        }
+    }
     
 }
 
