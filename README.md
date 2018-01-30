@@ -1,0 +1,1 @@
+This project is done with core data and realm. codes are branched according to the technology used.
