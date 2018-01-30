@@ -21,17 +21,27 @@ struct ItemTableVM {
     var array: [ModelItem] = []
     var count: Int { get {return array.count }}
     
-    mutating func add(newItem: String){
+    mutating func add(newItem: String, parentCat: Cat){
         let item = ModelItem(context: context)
         item.name = newItem
         item.didCheck = false
         item.importance = 2
-        
+        item.parentCat = parentCat
+        print(array.count)
         array.append(item)
         save()
     }
     
-    mutating func fetch(with request: NSFetchRequest<ModelItem> = ModelItem.fetchRequest()){
+    mutating func fetch(with request: NSFetchRequest<ModelItem> = ModelItem.fetchRequest(),and predicate: NSPredicate? = nil, givenCat: String){
+        
+        var CP = NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "parentCat.type MATCHES %@", givenCat)])
+        
+        if let predicate = predicate {
+            CP = NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "parentCat.type MATCHES %@", givenCat),predicate])
+        }
+
+        request.predicate = CP
+        
         do{
             array = try context.fetch(request)
         } catch {
@@ -50,15 +60,14 @@ struct ItemTableVM {
         save()
     }
     
-    mutating func Search(text: String = ""){
+    mutating func Search(text: String = "", givenCat: String){
+        
         let request: NSFetchRequest<ModelItem> = ModelItem.fetchRequest()
         let predicate = NSPredicate(format: "name CONTAINS %@", text)
-        
-        request.predicate = predicate
-        
+
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
 
-        fetch(with: request)
+        fetch(with: request, and: predicate, givenCat: givenCat)
     }
     
 }

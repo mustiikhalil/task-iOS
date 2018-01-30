@@ -16,12 +16,19 @@ var rout = Routing()
 class TableVC: UITableViewController {
     
     var tableVM = ItemTableVM()
+    var selectedCat: Cat? {
+        didSet{
+            
+            if let selected = selectedCat?.type {
+                tableVM.fetch(givenCat: selected)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableVM.fetch()
-        tableView.register(ItemVCell.self)
+        self.tableView.register(ItemVCell.self)
     }
     
     
@@ -35,11 +42,10 @@ class TableVC: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath as NSIndexPath) as ItemVCell
         let data = tableVM.array[indexPath.row]
-
         cell.configure(with: data)
         cell.accessoryType = data.didCheck ? .checkmark : .none
         
-        return UITableViewCell()
+        return cell
         
     }
     
@@ -61,8 +67,7 @@ class TableVC: UITableViewController {
         let alertAction = UIAlertAction(title: "Add", style: .default){
             (action) in
             
-            self.tableVM.add(newItem: textField.text!)
-            
+            self.tableVM.add(newItem: textField.text!, parentCat: self.selectedCat!)
             self.tableView.reloadData()
             
         }
@@ -84,20 +89,20 @@ class TableVC: UITableViewController {
 
 extension TableVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        tableVM.Search(text: searchBar.text!)
+        tableVM.Search(text: searchBar.text!,givenCat: (selectedCat?.type!)!)
         tableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0{
-            tableVM.fetch()
+            tableVM.fetch(givenCat: (selectedCat?.type!)!)
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
             }
             
         }
         else{
-            tableVM.Search(text: searchBar.text!)
+            tableVM.Search(text: searchBar.text!,givenCat: (selectedCat?.type!)!)
         }
     }
     

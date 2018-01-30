@@ -10,9 +10,9 @@ import UIKit
 
 class ItemVCell: UITableViewCell {
 
-    @IBOutlet weak var labelForItem: UILabel!
-
+    @IBOutlet weak var textLbl: UILabel!
+    
     func configure(with data: ModelItem){
-        labelForItem.text = data.name
+        textLbl.text = (data.name)!
     }
 }

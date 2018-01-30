@@ -9,7 +9,7 @@
 import UIKit
 
 class MainVC: UITableViewController {
-
+    
     // setting ViewModel instance
     var categoryVM = CategoryVM()
     
@@ -37,6 +37,20 @@ class MainVC: UITableViewController {
     }
     
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goto", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let desVC = segue.destination as! TableVC
+        
+        if let indexPath = tableView.indexPathForSelectedRow{
+            desVC.selectedCat = categoryVM.array[indexPath.row]
+        }
+        
+        
+    }
     
     // MARK - adding category
     @IBAction func addCatg(_ sender: Any) {
@@ -59,5 +73,5 @@ class MainVC: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-
+    
 }
