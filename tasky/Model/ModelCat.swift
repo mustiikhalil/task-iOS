@@ -16,6 +16,7 @@ enum Important: Int{
 }
 
 struct ModelCat {
+    var didCheck: Bool
     var name: String
     var importance: Important
 }
@@ -24,5 +25,7 @@ extension ModelCat{
     init(newName: String, important: Important = .low) {
         name = newName
         importance = important
+        didCheck = false
     }
 }
+

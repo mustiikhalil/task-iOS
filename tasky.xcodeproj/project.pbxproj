@@ -22,7 +22,8 @@
 		8AB728AE201F3EDE00E65E55 /* TableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728AD201F3EDE00E65E55 /* TableVM.swift */; };
 		8AB728B0201F427100E65E55 /* ModelCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728AF201F427100E65E55 /* ModelCat.swift */; };
 		8AB728B2201F49BC00E65E55 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728B1201F49BC00E65E55 /* Router.swift */; };
-		8AB728BA201F5E0300E65E55 /* UIAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728B9201F5E0300E65E55 /* UIAlert.swift */; };
+		8AB728BC201F62EB00E65E55 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728BB201F62EB00E65E55 /* Database.swift */; };
+		8AB728BE201F62F700E65E55 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728BD201F62F700E65E55 /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +65,8 @@
 		8AB728AD201F3EDE00E65E55 /* TableVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVM.swift; sourceTree = "<group>"; };
 		8AB728AF201F427100E65E55 /* ModelCat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCat.swift; sourceTree = "<group>"; };
 		8AB728B1201F49BC00E65E55 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		8AB728B9201F5E0300E65E55 /* UIAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlert.swift; sourceTree = "<group>"; };
+		8AB728BB201F62EB00E65E55 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		8AB728BD201F62F700E65E55 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				8AB728B1201F49BC00E65E55 /* Router.swift */,
+				8AB728BB201F62EB00E65E55 /* Database.swift */,
+				8AB728BD201F62F700E65E55 /* Network.swift */,
 			);
 			path = RLND;
 			sourceTree = "<group>";
@@ -182,6 +186,7 @@
 		8A8772CE201F1C4D00C34F73 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8A8772CF201F1C5A00C34F73 /* Controllar */,
 				8A8772D1201F1C8500C34F73 /* Extensions */,
 				8A8772D0201F1C6C00C34F73 /* View */,
 			);
@@ -199,11 +204,9 @@
 		8A8772D0201F1C6C00C34F73 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8AB728B9201F5E0300E65E55 /* UIAlert.swift */,
 				8A5A2F28201F0C8900117E17 /* Main.storyboard */,
 				8A8772D2201F1CD300C34F73 /* CategoryTVC.xib */,
 				8A8772D3201F1CD300C34F73 /* CategoryTVC.swift */,
-				8A8772CF201F1C5A00C34F73 /* Controllar */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -351,15 +354,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AB728BA201F5E0300E65E55 /* UIAlert.swift in Sources */,
 				8A8772D7201F1D9D00C34F73 /* Protocols.swift in Sources */,
 				8A5A2F27201F0C8900117E17 /* TableVC.swift in Sources */,
 				8AB728B0201F427100E65E55 /* ModelCat.swift in Sources */,
 				8A5A2F25201F0C8900117E17 /* AppDelegate.swift in Sources */,
 				8AB728B2201F49BC00E65E55 /* Router.swift in Sources */,
+				8AB728BE201F62F700E65E55 /* Network.swift in Sources */,
 				8AB728AE201F3EDE00E65E55 /* TableVM.swift in Sources */,
 				8A5A2F2D201F0C8900117E17 /* tasky.xcdatamodeld in Sources */,
 				8A8772D5201F1CD300C34F73 /* CategoryTVC.swift in Sources */,
+				8AB728BC201F62EB00E65E55 /* Database.swift in Sources */,
 				8A8772DB201F1F9300C34F73 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

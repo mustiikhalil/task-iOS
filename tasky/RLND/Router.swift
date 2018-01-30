@@ -18,8 +18,6 @@ struct Path {
 class Routing: Router {
 
     
-
-    
     var root: UIViewController = TableVC()
     
     func push(id: Path, nav: UIViewController) {

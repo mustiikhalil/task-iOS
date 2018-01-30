@@ -20,3 +20,10 @@ protocol Router {
     func push(id: Path, nav: UIViewController)
     func back(id: Path, nav: UIViewController)
 }
+
+
+protocol Network {}
+
+protocol Database {}
+
+protocol Binding {}
