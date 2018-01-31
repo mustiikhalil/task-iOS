@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol ReusableView: class {}
 
@@ -21,9 +22,13 @@ protocol Router {
     func back(id: Path, nav: UIViewController)
 }
 
-
 protocol Network {}
 
-protocol Database {}
+protocol Database_Protocol {
+    
+    func save(to writtenToDatabase: Object)
+    func delete(to deleteFromDatabase: Object)
+    func deleteAll()
+}
 
 protocol Binding {}

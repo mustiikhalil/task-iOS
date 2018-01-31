@@ -8,38 +8,35 @@
 //
 import RealmSwift
 
-struct CategoryVM {
-
+class CategoryVM {
+    
     // MARK - declared variables
     
-    var array: Results<CategoryOfItem>?
+    var array: Results<CategoryOfItem>!
     
-//    var count: Int { get { return array.count ?? 0 }}
-
     // MARK - adding into the DB
-    mutating func add(newItem: String){
+    
+    func add(newItem: String){
         let item = CategoryOfItem()
         item.type = newItem
-        save(to: item)
+        database.save(to: item)
     }
 
     // MARK - get from the DB
-    mutating func fetch(){
+    
+    func fetch(){
         array = realm.objects(CategoryOfItem.self)
     }
 
     // MARK - remove from DB
-    mutating func remove(at index: Int){
+    
+    func remove(at index: Int){
        
-    }
-    mutating func delete(){
-        try! realm.write {
-            realm.deleteAll()
-        }
     }
 
     // MARK - Search in DB
-    mutating func Search(text: String = ""){
+    
+    func Search(text: String = ""){
        
     }
     

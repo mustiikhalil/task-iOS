@@ -11,13 +11,45 @@ import RealmSwift
 
 let realm = try! Realm()
 
-func save(to writtenToDatabase: Object){
-    do {
-        try realm.write {
-            realm.add(writtenToDatabase)
+class Databasing: Database_Protocol {
+    
+    func save(to writtenToDatabase: Object) {
+        do {
+            try realm.write {
+                realm.add(writtenToDatabase)
+            }
+        } catch {
+            print("error")
         }
-    } catch {
-        print("error")
     }
+    
+    func saveByAppend(to writtenToDatabase: Object,type: Object){
+        
+        if let category = type as? CategoryOfItem {
+            do {
+                try realm.write {
+                    category.items.append(writtenToDatabase as! Item)
+                }
+                
+            } catch {
+                print("error")
+            }
+        }
+        
+    }
+    
+    func delete(to deleteFromDatabase: Object) {
+        print("delete")
+    }
+    
+    func deleteAll() {
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
+    
+    
+
 }
 
+let database = Databasing()

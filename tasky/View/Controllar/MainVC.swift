@@ -14,13 +14,13 @@ class MainVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         categoryVM.fetch()
-        categoryVM.delete()
         tableView.register(TypeOfItems.self)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return categoryVM.array?.count ?? 0
     }
     
@@ -33,28 +33,26 @@ class MainVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        performSegue(withIdentifier: "toItems", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destVC = segue.destination as! TableVC
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destVC.selectedCat = categoryVM.array?[indexPath.row]
+        }
     }
     
     @IBAction func addCat(_ sender: UIBarButtonItem) {
         
-        var textField = UITextField()
-        let alert = UIAlertController(title: "Add Item", message: "Please add an Item to the list", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Add", style: .default){
-            (action) in
-            
-            self.categoryVM.add(newItem: textField.text!)
-            
-            self.tableView.reloadData()
-            
-        }
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Create new Item"
-            textField = alertTextField
-        }
-        alert.addAction(alertAction)
+        let alert = AlertUI(tableView: self.tableView, Controllertitle: "Add a Category")
+        alert.showAlertAction(category: categoryVM)
+        present(alert.alert, animated: true, completion: nil)
         
-        present(alert, animated: true, completion: nil)
         
     }
     
 }
+
+

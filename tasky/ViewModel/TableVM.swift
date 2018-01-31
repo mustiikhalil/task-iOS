@@ -9,18 +9,42 @@
 import Foundation
 import RealmSwift
 
-struct TableVM {
+
+class TableVM {
+    
     var array: Results<Item>?
-    init() {
-       
+    
+    func fetch(from objectInstance: CategoryOfItem){
+        array = objectInstance.items.sorted(byKeyPath: "name", ascending: true)
     }
-    mutating func add(newItem: String){
+    
+    func add(newItem: String, type: CategoryOfItem?){
+        
         let item = Item()
         item.name = newItem
         item.didCheck = false
         item.importance = 2
-        save(to: item)
+        database.saveByAppend(to: item, type: type!)
+        
     }
     
+    func updateChecker(itemAt item: Item?){
+        if let currentItem = item {
+          
+            do {
+                try realm.write {
+                    currentItem.didCheck = !currentItem.didCheck
+                  
+                }
+                
+            } catch {
+                
+                print(" error updating item")
+            }
+        }
+        
+        
+    }
+
 }
 

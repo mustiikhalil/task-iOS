@@ -77,7 +77,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="nab-mm-c11" kind="show" id="BcR-o1-6wn"/>
+                        <segue destination="nab-mm-c11" kind="show" identifier="toItems" id="BcR-o1-6wn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eD-ov-XE3" userLabel="First Responder" sceneMemberID="firstResponder"/>

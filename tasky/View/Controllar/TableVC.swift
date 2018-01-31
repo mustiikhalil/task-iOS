@@ -7,75 +7,58 @@
 //
 
 import UIKit
-
-var rout = Routing()
+import RealmSwift
 
 class TableVC: UITableViewController {
     
     var tableVM = TableVM()
+    var selectedCat: CategoryOfItem? {
+        didSet{
+            tableVM.fetch(from: selectedCat!)
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(CategoryTVC.self)
+        tableView.register(ItemCell.self)
     }
     
     
     //Mark - Table View Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return tableVM.array?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath as NSIndexPath) as CategoryTVC
-//        let data = tableVM.array?[indexPath.row]
-//
-//        cell.ConfigureCell(at: data)
-//
-//        cell.accessoryType = data.didCheck ? .checkmark : .none
-        
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath as NSIndexPath) as ItemCell
+        if let data = tableVM.array?[indexPath.row]{
+            cell.ConfigureCell(at: data)
+            cell.accessoryType = data.didCheck ? .checkmark : .none
+        }
         return cell
-        
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        tableVM.array[indexPath.row].didCheck = !(tableVM.array[indexPath.row].didCheck)
-//        tableView.reloadData()
-//
-//        tableView.deselectRow(at: indexPath, animated: true)
+        tableVM.updateChecker(itemAt: tableVM.array?[indexPath.row])
+        tableView.reloadData()
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        
-        //        let path = Path.init(id: "TableVC", type: "items")
-        //        rout.push(id: path , nav: self)
     }
     
     @IBAction func addNewItems(_ sender: Any) {
         
-        var textField = UITextField()
-        let alert = UIAlertController(title: "Add Item", message: "Please add an Item to the list", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Add", style: .default){
-            (action) in
-            self.tableVM.add(newItem: textField.text!)
-            
-            self.tableView.reloadData()
-            
-        }
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Create new Item"
-            textField = alertTextField
-        }
-        alert.addAction(alertAction)
-        
-        present(alert, animated: true, completion: nil)
-        
+        let alert = AlertUI(tableView: self.tableView, Controllertitle: "Add a New Item")
+        alert.showAlertAction(item: tableVM, selectedCat: selectedCat!)
+        present(alert.alert, animated: true, completion: nil)
         
     }
-    
-    
+
 }
 
 

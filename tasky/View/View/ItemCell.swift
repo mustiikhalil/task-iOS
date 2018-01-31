@@ -8,9 +8,7 @@
 
 import UIKit
 
-
-
-class CategoryTVC: UITableViewCell {
+class ItemCell: UITableViewCell {
 
     @IBOutlet weak var categoryType: UILabel!
     @IBOutlet weak var priority: UILabel!
