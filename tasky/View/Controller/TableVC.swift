@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import SwipeCellKit
 
-class TableVC: UITableViewController {
+class TableVC: SwipeTableViewController {
    
 
     var tableVM = TableVM()
@@ -18,38 +18,21 @@ class TableVC: UITableViewController {
         didSet{
             tableVM.fetch(from: selectedCat!)
             tableView.reloadData()
+            self.navigationItem.title = selectedCat?.type
+            
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 80.0
+        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.tableFooterView = UIView()
+        
     }
     
     
     //Mark - Table View Data Source
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
-        
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            self.tableVM.remove(at: indexPath.row)
-            action.fulfill(with: .delete)
-        }
-        
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "delete")
-        
-        return [deleteAction]
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
-        var options = SwipeTableOptions()
-        options.expansionStyle = .destructive
-        options.transitionStyle = .border
-        return options
-    }
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -58,7 +41,7 @@ class TableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if let data = tableVM.array?[indexPath.row]{
             cell.textLabel?.text = data.name
             cell.accessoryType = data.didCheck ? .checkmark : .none
@@ -80,6 +63,10 @@ class TableVC: UITableViewController {
         alert.showAlertAction(item: tableVM, selectedCat: selectedCat!)
         present(alert.alert, animated: true, completion: nil)
         
+    }
+    
+    override func updateModel(at indexPath: IndexPath) {
+        tableVM.remove(at: indexPath.row)
     }
 
 }

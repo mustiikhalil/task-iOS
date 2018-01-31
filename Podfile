@@ -7,4 +7,5 @@ target 'tasky' do
 
   pod 'RealmSwift'
   pod 'SwipeCellKit'
+  pod 'ChameleonFramework'
 end

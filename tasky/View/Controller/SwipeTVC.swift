@@ -1,58 +1,28 @@
 //
-//  MainVC.swift
+//  SwipeTVC.swift
 //  tasky
 //
-//  Created by Mustafa Khalil on 1/30/18.
+//  Created by Mustafa Khalil on 1/31/18.
 //  Copyright © 2018 Mustafa Khalil. All rights reserved.
 //
 
 import UIKit
 import SwipeCellKit
 
-class MainVC: UITableViewController {
+class SwipeTVC: UITableViewController,  SwipeTableViewCellDelegate {
 
-    var categoryVM = CategoryVM()
+    var cell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        categoryVM.fetch()
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return categoryVM.array?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = categoryVM.getElement(at: indexPath.row)?.type
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeTableViewCell
+        cell.delegate = self
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: "toItems", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let destVC = segue.destination as! TableVC
-        if let indexPath = tableView.indexPathForSelectedRow {
-            destVC.selectedCat = categoryVM.array?[indexPath.row]
-        }
-    }
-    
-    @IBAction func addCat(_ sender: UIBarButtonItem) {
-        
-        let alert = AlertUI(tableView: self.tableView, Controllertitle: "Add a Category")
-        alert.showAlertAction(category: categoryVM)
-        present(alert.alert, animated: true, completion: nil)
-        
-        
-    }
-    
+
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else {
             
@@ -61,14 +31,13 @@ class MainVC: UITableViewController {
                 
             }
             shareAction.image = UIImage(named: "unread")
-
+            
             return [shareAction]
             
         }
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            self.categoryVM.remove(at: indexPath.row)
-            action.fulfill(with: .delete)
+            
         }
         
         // customize the action appearance
@@ -85,7 +54,6 @@ class MainVC: UITableViewController {
         options.expansionStyle = .destructive
         return options
     }
-    
+   
+
 }
-
-

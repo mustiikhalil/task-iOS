@@ -14,6 +14,7 @@ class AlertUI{
     var alert: UIAlertController!
     var alertAction: UIAlertAction?
     var table: UITableView!
+    var dismiss: UIAlertAction?
     
     init(tableView: UITableView, Controllertitle: String) {
         alert = UIAlertController(title: Controllertitle, message: "Please add an Item to the list", preferredStyle: .alert)
@@ -39,6 +40,9 @@ class AlertUI{
             self.table.reloadData()
             
         }
+        dismiss = UIAlertAction(title: "dismiss", style: .cancel, handler: { (action) in
+            
+        })
         finish()
     }
     
@@ -51,6 +55,9 @@ class AlertUI{
             self.table.reloadData()
             
         }
+        dismiss = UIAlertAction(title: "dismiss", style: .cancel, handler: { (action) in
+            
+        })
 
         finish()
     }
@@ -61,6 +68,7 @@ class AlertUI{
             self.textField = alertTextField
         }
         alert.addAction(alertAction!)
+        alert.addAction(dismiss!)
     }
 }
 
