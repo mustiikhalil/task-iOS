@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4E24B956FBC7F713CB53B18F /* Pods_tasky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47B12A6E1799987A3AB9A4D /* Pods_tasky.framework */; };
+		8A11F7052020A675000483FA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11F7042020A675000483FA /* Category.swift */; };
+		8A11F7072020A86C000483FA /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11F7062020A86C000483FA /* DataBase.swift */; };
+		8A11F7092020A968000483FA /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11F7082020A968000483FA /* MainVC.swift */; };
+		8A11F70C2020AA15000483FA /* TypeOfItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A11F70A2020AA15000483FA /* TypeOfItems.xib */; };
+		8A11F70D2020AA15000483FA /* TypeOfItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11F70B2020AA15000483FA /* TypeOfItems.swift */; };
 		8A5A2F25201F0C8900117E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A2F24201F0C8900117E17 /* AppDelegate.swift */; };
 		8A5A2F27201F0C8900117E17 /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A2F26201F0C8900117E17 /* TableVC.swift */; };
 		8A5A2F2A201F0C8900117E17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5A2F28201F0C8900117E17 /* Main.storyboard */; };
-		8A5A2F2D201F0C8900117E17 /* tasky.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A2F2B201F0C8900117E17 /* tasky.xcdatamodeld */; };
 		8A5A2F2F201F0C8900117E17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5A2F2E201F0C8900117E17 /* Assets.xcassets */; };
 		8A5A2F32201F0C8900117E17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5A2F30201F0C8900117E17 /* LaunchScreen.storyboard */; };
 		8A5A2F3D201F0C8900117E17 /* taskyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A2F3C201F0C8900117E17 /* taskyTests.swift */; };
@@ -22,9 +26,8 @@
 		8A8772DB201F1F9300C34F73 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8772DA201F1F9300C34F73 /* Extensions.swift */; };
 		8A92EB3F20209F1400802AF5 /* CategoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A92EB3E20209F1400802AF5 /* CategoryVM.swift */; };
 		8AB728AE201F3EDE00E65E55 /* TableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728AD201F3EDE00E65E55 /* TableVM.swift */; };
-		8AB728B0201F427100E65E55 /* ModelCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728AF201F427100E65E55 /* ModelCat.swift */; };
+		8AB728B0201F427100E65E55 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728AF201F427100E65E55 /* Items.swift */; };
 		8AB728B2201F49BC00E65E55 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728B1201F49BC00E65E55 /* Router.swift */; };
-		8AB728BC201F62EB00E65E55 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728BB201F62EB00E65E55 /* Database.swift */; };
 		8AB728BE201F62F700E65E55 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB728BD201F62F700E65E55 /* Network.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,11 +51,15 @@
 /* Begin PBXFileReference section */
 		6D18CF9BFCF2CBAA7C69E0FF /* Pods-tasky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tasky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tasky/Pods-tasky.debug.xcconfig"; sourceTree = "<group>"; };
 		7837A1088EF1A85191DD7C25 /* Pods-tasky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tasky.release.xcconfig"; path = "Pods/Target Support Files/Pods-tasky/Pods-tasky.release.xcconfig"; sourceTree = "<group>"; };
+		8A11F7042020A675000483FA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		8A11F7062020A86C000483FA /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		8A11F7082020A968000483FA /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		8A11F70A2020AA15000483FA /* TypeOfItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeOfItems.xib; sourceTree = "<group>"; };
+		8A11F70B2020AA15000483FA /* TypeOfItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfItems.swift; sourceTree = "<group>"; };
 		8A5A2F21201F0C8900117E17 /* tasky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tasky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5A2F24201F0C8900117E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5A2F26201F0C8900117E17 /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		8A5A2F29201F0C8900117E17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8A5A2F2C201F0C8900117E17 /* tasky.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tasky.xcdatamodel; sourceTree = "<group>"; };
 		8A5A2F2E201F0C8900117E17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5A2F31201F0C8900117E17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A5A2F33201F0C8900117E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,9 +75,8 @@
 		8A8772DA201F1F9300C34F73 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8A92EB3E20209F1400802AF5 /* CategoryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVM.swift; sourceTree = "<group>"; };
 		8AB728AD201F3EDE00E65E55 /* TableVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVM.swift; sourceTree = "<group>"; };
-		8AB728AF201F427100E65E55 /* ModelCat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCat.swift; sourceTree = "<group>"; };
+		8AB728AF201F427100E65E55 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		8AB728B1201F49BC00E65E55 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		8AB728BB201F62EB00E65E55 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		8AB728BD201F62F700E65E55 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		E47B12A6E1799987A3AB9A4D /* Pods_tasky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tasky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -152,7 +158,6 @@
 				8A5A2F2E201F0C8900117E17 /* Assets.xcassets */,
 				8A5A2F30201F0C8900117E17 /* LaunchScreen.storyboard */,
 				8A5A2F33201F0C8900117E17 /* Info.plist */,
-				8A5A2F2B201F0C8900117E17 /* tasky.xcdatamodeld */,
 			);
 			path = tasky;
 			sourceTree = "<group>";
@@ -187,8 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				8AB728B1201F49BC00E65E55 /* Router.swift */,
-				8AB728BB201F62EB00E65E55 /* Database.swift */,
 				8AB728BD201F62F700E65E55 /* Network.swift */,
+				8A11F7062020A86C000483FA /* DataBase.swift */,
 			);
 			path = RLND;
 			sourceTree = "<group>";
@@ -196,7 +201,8 @@
 		8A8772CC201F1C3900C34F73 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8AB728AF201F427100E65E55 /* ModelCat.swift */,
+				8AB728AF201F427100E65E55 /* Items.swift */,
+				8A11F7042020A675000483FA /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				8A5A2F26201F0C8900117E17 /* TableVC.swift */,
+				8A11F7082020A968000483FA /* MainVC.swift */,
 			);
 			path = Controllar;
 			sourceTree = "<group>";
@@ -232,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				8A5A2F28201F0C8900117E17 /* Main.storyboard */,
+				8A11F70A2020AA15000483FA /* TypeOfItems.xib */,
+				8A11F70B2020AA15000483FA /* TypeOfItems.swift */,
 				8A8772D2201F1CD300C34F73 /* CategoryTVC.xib */,
 				8A8772D3201F1CD300C34F73 /* CategoryTVC.swift */,
 			);
@@ -356,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A11F70C2020AA15000483FA /* TypeOfItems.xib in Resources */,
 				8A5A2F32201F0C8900117E17 /* LaunchScreen.storyboard in Resources */,
 				8A5A2F2F201F0C8900117E17 /* Assets.xcassets in Resources */,
 				8A5A2F2A201F0C8900117E17 /* Main.storyboard in Resources */,
@@ -443,15 +453,17 @@
 				8A92EB3F20209F1400802AF5 /* CategoryVM.swift in Sources */,
 				8A8772D7201F1D9D00C34F73 /* Protocols.swift in Sources */,
 				8A5A2F27201F0C8900117E17 /* TableVC.swift in Sources */,
-				8AB728B0201F427100E65E55 /* ModelCat.swift in Sources */,
+				8AB728B0201F427100E65E55 /* Items.swift in Sources */,
 				8A5A2F25201F0C8900117E17 /* AppDelegate.swift in Sources */,
 				8AB728B2201F49BC00E65E55 /* Router.swift in Sources */,
 				8AB728BE201F62F700E65E55 /* Network.swift in Sources */,
 				8AB728AE201F3EDE00E65E55 /* TableVM.swift in Sources */,
-				8A5A2F2D201F0C8900117E17 /* tasky.xcdatamodeld in Sources */,
+				8A11F7052020A675000483FA /* Category.swift in Sources */,
+				8A11F70D2020AA15000483FA /* TypeOfItems.swift in Sources */,
 				8A8772D5201F1CD300C34F73 /* CategoryTVC.swift in Sources */,
-				8AB728BC201F62EB00E65E55 /* Database.swift in Sources */,
 				8A8772DB201F1F9300C34F73 /* Extensions.swift in Sources */,
+				8A11F7072020A86C000483FA /* DataBase.swift in Sources */,
+				8A11F7092020A968000483FA /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,19 +763,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		8A5A2F2B201F0C8900117E17 /* tasky.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8A5A2F2C201F0C8900117E17 /* tasky.xcdatamodel */,
-			);
-			currentVersion = 8A5A2F2C201F0C8900117E17 /* tasky.xcdatamodel */;
-			path = tasky.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 8A5A2F19201F0C8900117E17 /* Project object */;
 }

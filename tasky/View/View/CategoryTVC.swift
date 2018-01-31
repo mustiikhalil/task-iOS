@@ -20,9 +20,8 @@ class CategoryTVC: UITableViewCell {
         // Initialization code
     }
 
-    func ConfigureCell(at catCell: CatCell){
+    func ConfigureCell(at catCell: Item) {
         categoryType.text = catCell.name
-        priority.text = catCell.important
     }
 }
 

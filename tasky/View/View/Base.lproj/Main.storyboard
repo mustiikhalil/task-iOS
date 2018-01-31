@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tasky-->
+        <!--Items-->
         <scene sceneID="aRz-Vr-z0g">
             <objects>
                 <tableViewController storyboardIdentifier="TableVC_cat" id="nab-mm-c11" customClass="TableVC" customModule="tasky" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,7 +32,7 @@
                             <outlet property="delegate" destination="nab-mm-c11" id="a9F-j4-TwD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tasky" id="KIn-RC-Swb">
+                    <navigationItem key="navigationItem" title="Items" id="KIn-RC-Swb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1j1-76-gFe">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -43,35 +43,46 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7HM-hK-y4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="535.20000000000005" y="51.724137931034484"/>
+            <point key="canvasLocation" x="1716" y="52"/>
         </scene>
-        <!--TableVC-->
-        <scene sceneID="7yq-in-mH6">
+        <!--MainVC-->
+        <scene sceneID="nel-02-hRH">
             <objects>
-                <tableViewController storyboardIdentifier="TableVC_items" id="83v-s8-MdW" customClass="TableVC" customModule="tasky" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="b9R-HP-Sn3">
+                <tableViewController restorationIdentifier="MainVC" id="2Dy-26-6ZQ" userLabel="MainVC" customClass="MainVC" customModule="tasky" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aiI-at-A0j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jVk-IU-zfQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vtw-ma-zUP">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jVk-IU-zfQ" id="iL0-qc-Tfe">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vtw-ma-zUP" id="YS4-jE-b6P">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="83v-s8-MdW" id="0MT-H7-9rb"/>
-                            <outlet property="delegate" destination="83v-s8-MdW" id="94e-Yb-VZx"/>
+                            <outlet property="dataSource" destination="2Dy-26-6ZQ" id="yvP-YX-oyP"/>
+                            <outlet property="delegate" destination="2Dy-26-6ZQ" id="37m-PF-XQr"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Tasky" id="LUu-Hj-I8r">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RFZ-pa-FDc">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addCat:" destination="2Dy-26-6ZQ" id="hbd-zu-Qfw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="nab-mm-c11" kind="show" id="BcR-o1-6wn"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EXR-sQ-dnL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eD-ov-XE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1394" y="52"/>
+            <point key="canvasLocation" x="702" y="52"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ud5-CR-KAZ">
@@ -92,7 +103,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="nab-mm-c11" kind="relationship" relationship="rootViewController" id="9II-c5-kiV"/>
+                        <segue destination="2Dy-26-6ZQ" kind="relationship" relationship="rootViewController" id="fxp-9c-jKw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CKI-iT-4OE" userLabel="First Responder" sceneMemberID="firstResponder"/>

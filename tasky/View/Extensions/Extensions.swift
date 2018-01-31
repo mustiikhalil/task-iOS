@@ -30,7 +30,7 @@ extension NibLoadableView where Self: UIView {
 extension UITableViewCell: ReusableView { }
 
 extension CategoryTVC: NibLoadableView { }
-
+extension TypeOfItems: NibLoadableView { }
 
 // MARK - table View Extensions
 extension UITableView {
