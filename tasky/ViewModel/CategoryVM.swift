@@ -42,7 +42,6 @@ class CategoryVM {
     }
     
     func getElement(at index: Int) -> CategoryOfItem?{
-        print(array?[index])
         return array?[index]
     }
 

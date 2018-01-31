@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class TypeOfItems: UITableViewCell {
+class TypeOfItems: SwipeTableViewCell {
 
     @IBOutlet weak var textLbl: UILabel!
     

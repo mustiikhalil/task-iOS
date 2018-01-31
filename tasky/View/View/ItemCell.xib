@@ -33,6 +33,7 @@
                     <constraint firstItem="ALu-kN-NLV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="26" id="S3c-6l-fXP"/>
                 </constraints>
             </tableViewCellContentView>
+            <gestureRecognizers/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="categoryType" destination="ALu-kN-NLV" id="mZd-PX-N6G"/>

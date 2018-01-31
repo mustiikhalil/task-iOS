@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class MainVC: UITableViewController {
+class MainVC: UITableViewController, SwipeTableViewCellDelegate {
 
     var categoryVM = CategoryVM()
     
@@ -30,6 +31,7 @@ class MainVC: UITableViewController {
        
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath as NSIndexPath) as TypeOfItems
         cell.configure(item: categoryVM.getElement(at: indexPath.row))
+        cell.delegate = self
         return cell
     }
     
@@ -53,6 +55,39 @@ class MainVC: UITableViewController {
         present(alert.alert, animated: true, completion: nil)
         
         
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else {
+            
+            let shareAction = SwipeAction(style: .default, title: "Share") { (Action, indexPath) in
+                print("share")
+                
+            }
+            shareAction.image = UIImage(named: "unread")
+
+            return [shareAction]
+            
+        }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            self.categoryVM.remove(at: indexPath.row)
+            action.fulfill(with: .delete)
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+        
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        options.transitionStyle = .border
+        
+        guard orientation == .right else {return options}
+        options.expansionStyle = .destructive
+        return options
     }
     
 }

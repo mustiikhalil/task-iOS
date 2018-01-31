@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class ItemCell: UITableViewCell {
+class ItemCell: SwipeTableViewCell {
 
     @IBOutlet weak var categoryType: UILabel!
     @IBOutlet weak var priority: UILabel!
@@ -18,6 +19,8 @@ class ItemCell: UITableViewCell {
         // Initialization code
     }
 
+
+    
     func ConfigureCell(at catCell: Item) {
         categoryType.text = catCell.name
     }

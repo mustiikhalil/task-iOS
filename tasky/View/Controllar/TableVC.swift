@@ -8,9 +8,11 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
-class TableVC: UITableViewController {
-    
+class TableVC: UITableViewController, SwipeTableViewCellDelegate {
+   
+
     var tableVM = TableVM()
     var selectedCat: CategoryOfItem? {
         didSet{
@@ -29,6 +31,28 @@ class TableVC: UITableViewController {
     
     //Mark - Table View Data Source
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            self.tableVM.remove(at: indexPath.row)
+            action.fulfill(with: .delete)
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+        
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        options.expansionStyle = .destructive
+        options.transitionStyle = .border
+        return options
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return tableVM.array?.count ?? 0
@@ -39,6 +63,7 @@ class TableVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath as NSIndexPath) as ItemCell
         if let data = tableVM.array?[indexPath.row]{
             cell.ConfigureCell(at: data)
+            cell.delegate = self
             cell.accessoryType = data.didCheck ? .checkmark : .none
         }
         return cell
