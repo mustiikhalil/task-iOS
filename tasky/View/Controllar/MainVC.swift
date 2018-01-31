@@ -14,7 +14,9 @@ class MainVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.tableFooterView = UIView()
+        database.deleteAll()
         categoryVM.fetch()
         tableView.register(TypeOfItems.self)
     }

@@ -22,6 +22,7 @@ class TableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.tableFooterView = UIView()
         tableView.register(ItemCell.self)
     }
     
@@ -61,4 +62,24 @@ class TableVC: UITableViewController {
 
 }
 
+extension TableVC: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        tableVM.array = tableVM.array?.filter("name CONTAINS[cd] %@",searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text?.count == 0 {
+            
+            tableVM.fetch(from: selectedCat!)
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+        
+    }
+}
 

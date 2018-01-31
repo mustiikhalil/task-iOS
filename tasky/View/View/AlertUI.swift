@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertUI {
+class AlertUI{
     
     var textField: UITextField!
     var alert: UIAlertController!
@@ -32,7 +32,10 @@ class AlertUI {
         
         alertAction = UIAlertAction(title: "Add", style: .default){
             (action) in
-            category.add(newItem: self.textField.text!)
+            
+            if self.textField.text! != ""{
+                category.add(newItem: self.textField.text!)
+            }
             self.table.reloadData()
             
         }
@@ -43,6 +46,7 @@ class AlertUI {
         
         alertAction = UIAlertAction(title: "Add", style: .default){
             (action) in
+
             item.add(newItem: self.textField.text!, type: selectedCat)
             self.table.reloadData()
             

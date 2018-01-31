@@ -8,6 +8,7 @@
 //
 import RealmSwift
 
+
 class CategoryVM {
     
     // MARK - declared variables
@@ -31,7 +32,7 @@ class CategoryVM {
     // MARK - remove from DB
     
     func remove(at index: Int){
-       
+        database.delete(to: (array?[index])!)
     }
 
     // MARK - Search in DB
@@ -46,4 +47,5 @@ class CategoryVM {
     }
 
 }
+
 

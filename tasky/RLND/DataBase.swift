@@ -39,7 +39,13 @@ class Databasing: Database_Protocol {
     }
     
     func delete(to deleteFromDatabase: Object) {
-        print("delete")
+        do {
+            try realm.write {
+                realm.delete(deleteFromDatabase)
+            }
+        } catch {
+            print("error deleting")
+        }
     }
     
     func deleteAll() {
