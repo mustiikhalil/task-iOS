@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import SwipeCellKit
 
-class TableVC: UITableViewController, SwipeTableViewCellDelegate {
+class TableVC: UITableViewController {
    
 
     var tableVM = TableVM()
@@ -23,9 +23,7 @@ class TableVC: UITableViewController, SwipeTableViewCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.tableFooterView = UIView()
-        tableView.register(ItemCell.self)
     }
     
     
@@ -60,10 +58,9 @@ class TableVC: UITableViewController, SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath as NSIndexPath) as ItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let data = tableVM.array?[indexPath.row]{
-            cell.ConfigureCell(at: data)
-            cell.delegate = self
+            cell.textLabel?.text = data.name
             cell.accessoryType = data.didCheck ? .checkmark : .none
         }
         return cell

@@ -9,17 +9,14 @@
 import UIKit
 import SwipeCellKit
 
-class MainVC: UITableViewController, SwipeTableViewCellDelegate {
+class MainVC: UITableViewController {
 
     var categoryVM = CategoryVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.tableFooterView = UIView()
-        database.deleteAll()
         categoryVM.fetch()
-        tableView.register(TypeOfItems.self)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,9 +26,8 @@ class MainVC: UITableViewController, SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath as NSIndexPath) as TypeOfItems
-        cell.configure(item: categoryVM.getElement(at: indexPath.row))
-        cell.delegate = self
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = categoryVM.getElement(at: indexPath.row)?.type
         return cell
     }
     
